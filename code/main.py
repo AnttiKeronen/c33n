@@ -40,9 +40,10 @@ import signal
 import atexit
 
 if args.dataset == 'weibo':
-    processed_dir = "/sda/qiaojiao/code/Weibo16/processed"
-    big_processed_dir = "/sda/qiaojiao/code/Weibo16/processed"
-    save_dir = "/sda/qiaojiao/code/Weibo16/save"
+    processed_dir = r"C:\Users\keron\OneDrive\Työpöytä\c33n\data\weibo\processed"
+    big_processed_dir = r"C:\Users\keron\OneDrive\Työpöytä\c33n\data\weibo\processed"
+    save_dir = r"C:\Users\keron\OneDrive\Työpöytä\c33n\save"
+
 
     df_train = np.load(processed_dir + "/train_EANN_frozen.npy", allow_pickle=True)
     df_valid = np.load(processed_dir + "/valid_EANN_frozen.npy", allow_pickle=True)

@@ -10,16 +10,16 @@ import pandas as pd
 from cn_clip.clip import load_from_name, available_models
 import re
 from tqdm import tqdm
-import setproctitle
-setproctitle.setproctitle('qiaojiao')
-
-data_dir = "/sda/qiaojiao/code/Weibo16/row"
-processed_dir = "/sda/qiaojiao/code/Weibo16/processed"
-big_processed_dir = "/sda/qiaojiao/code/Weibo16/processed"
-processed_img_dir = "/sda/qiaojiao/code/Weibo16/processed/crops"
 
 
-device = "cuda:1"
+data_dir = r"C:\Users\keron\OneDrive\Työpöytä\c33n\data\weibo\processed"
+processed_dir = r"C:\Users\keron\OneDrive\Työpöytä\c33n\data\weibo\processed"
+big_processed_dir = r"C:\Users\keron\OneDrive\Työpöytä\c33n\data\weibo\processed"
+processed_img_dir = r"C:\Users\keron\OneDrive\Työpöytä\c33n\data\weibo\processed\crops"
+
+
+device = "cuda" if torch.cuda.is_available() else "cpu"
+
 CROP_NUM = 5
 
 def makedir(path):
@@ -106,7 +106,7 @@ def image_patch_preprocess(df, preprocess, transform):
     for index, row in tqdm(df.iterrows(), total=len(df)):
         # print(index, '/', len(df))
         image_id = row['image_id']
-        path = os.path.join("/sda/qiaojiao/code/Weibo16/processed/Weibo16_images_EANNSplit", image_id + '.jpg')
+        path = os.path.join("/Users\keron/OneDrive/Työpöytä/c33n/data/weibo/processed/Weibo16_images_EANNSplit", image_id + '.jpg')
         image = Image.open(path).convert('RGB')
         ori_image = preprocess(image)
         image = image.resize((640, 640), Image.ANTIALIAS)

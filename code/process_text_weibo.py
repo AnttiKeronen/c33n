@@ -9,9 +9,10 @@ import cn_clip.clip as clip
 from transformers import BertTokenizer, BertModel
 from tqdm import tqdm
 
-data_dir = "/sda/qiaojiao/code/Weibo16/row"
-processed_dir = "/sda/qiaojiao/code/Weibo16/processed"
-big_processed_dir = "/sda/qiaojiao/code/Weibo16/processed"
+data_dir = r"C:\Users\keron\OneDrive\Työpöytä\c33n\data\weibo\processed"
+processed_dir = r"C:\Users\keron\OneDrive\Työpöytä\c33n\data\weibo\processed"
+big_processed_dir = r"C:\Users\keron\OneDrive\Työpöytä\c33n\data\weibo\processed"
+
 
 CLIP_MODEL_NAME = "ViT-B-16"
 
@@ -129,9 +130,10 @@ def split_EANN_simple(df_data):
     """ split data according EANN
         df_data: paired() output
     """
-    id_test = pickle.load(open("/home/qiaojiao/Code/Datasets/Weibo16_Full/test_id.pickle", 'rb'))
-    id_train = pickle.load(open("/home/qiaojiao/Code/Datasets/Weibo16_Full/train_id.pickle", 'rb'))
-    id_valid = pickle.load(open("/home/qiaojiao/Code/Datasets/Weibo16_Full/validate_id.pickle", 'rb'))
+    id_test = pickle.load(open("./data/weibo/processed/test_id.pickle", "rb"))
+    id_train = pickle.load(open("./data/weibo/processed/train_id.pickle", "rb"))
+    id_valid = pickle.load(open("./data/weibo/processed/validate_id.pickle", "rb"))
+
     test = pd.DataFrame(None, columns=df_data.columns)
     train = pd.DataFrame(None, columns=df_data.columns)
     valid = pd.DataFrame(None, columns=df_data.columns)
